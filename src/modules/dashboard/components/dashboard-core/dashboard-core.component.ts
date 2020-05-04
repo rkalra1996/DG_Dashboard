@@ -12,4 +12,8 @@ export class DashboardCoreComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  triggerStateSelect(event) {
+    console.log('state select recieved in dashboard as ', event);
+  }
+
 }

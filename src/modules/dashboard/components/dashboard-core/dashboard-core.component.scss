@@ -1,4 +1,15 @@
 .dashboard-core-container {
     width: 100%;
     min-height: 85%;
+    .state-selector {
+        width: 100%;
+        height: 100px;
+        background-color: whitesmoke;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    angular-material-filter-dropdown {
+        width: 300px;
+    }
 }
