@@ -1,17 +1,17 @@
 .global-sidebar-container {
     height: 100%;
     .global-sidenav {
+        background-color: black;
         width: 150px;
         .tabs {
-            width: 100%;
+            color: white;
             .tab-list {
-                width: 100%;
                 list-style: none;
                 .tab-item {
-                    width: 100%;
                     height: 80px;
                     button {
                         display: flex;
+                        color: white;
                         align-items: center;
                         text-align: center;
                         justify-items: center;
