@@ -1,11 +1,18 @@
 <!-- <shared-global-sidebar></shared-global-sidebar> -->
 <mat-sidenav-container class="global-sidebar-container">
-    <mat-sidenav #sidenav [mode]="'over'">
+    <mat-sidenav #sidenav [mode]="'over'" class="global-sidenav">
         <div class="tabs">
             <ul class="tab-list">
-                <li class="tab-item">Tab 1</li>
-                <li class="tab-item">Tab 2</li>
-                <li class="tab-item">Tab 3</li>
+                <li class="tab-item">
+                    <button class="toggle-button">
+                        <fa-icon [icon]="icons?.faTachometerAlt"></fa-icon><span>Dashboard</span>
+                    </button>
+                </li>
+                <li class="tab-item">
+                    <button class="toggle-button">
+                        <fa-icon [icon]="icons?.faTools"></fa-icon><span>Settings</span>
+                    </button>
+                </li>
             </ul>
         </div>
     </mat-sidenav>
@@ -14,4 +21,4 @@
         <shared-header (toggleClicked)="sidenav.toggle()"></shared-header>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
-  </mat-sidenav-container>
+</mat-sidenav-container>
