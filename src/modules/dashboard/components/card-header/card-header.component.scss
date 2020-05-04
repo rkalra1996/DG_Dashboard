@@ -1,0 +1,49 @@
+.card-header {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: stretch;
+}
+
+.image-section, .stats, .chart {
+    flex: 1;
+    height: 100%;
+    padding: 3px;
+}
+
+.image-section {
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.stats {
+    color: darkgrey;
+    .figures, .title {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .figures {
+        text-align: center;
+        height: 80%;
+        font-weight: 500;
+        font-size: 4.2rem;
+    }
+    .title {
+        text-align: center;
+        height: 20%;
+        font-size: 22px;
+    }
+}
+
+.chart {
+    text-align: center;
+    img {
+        margin: auto;
+        width: 70%;
+        height: 100%;
+    }
+}
