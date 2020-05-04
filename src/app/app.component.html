@@ -1,2 +1,17 @@
-<shared-header></shared-header>
-<router-outlet></router-outlet>
+<!-- <shared-global-sidebar></shared-global-sidebar> -->
+<mat-sidenav-container class="global-sidebar-container">
+    <mat-sidenav #sidenav [mode]="'over'">
+        <div class="tabs">
+            <ul class="tab-list">
+                <li class="tab-item">Tab 1</li>
+                <li class="tab-item">Tab 2</li>
+                <li class="tab-item">Tab 3</li>
+            </ul>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <shared-header (toggleClicked)="sidenav.toggle()"></shared-header>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

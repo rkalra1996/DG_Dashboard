@@ -6,9 +6,11 @@ import { HeaderRightSectionComponent } from './components/header-right-section/h
 import { HeaderMiddleSectionComponent } from './components/header-middle-section/header-middle-section.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-
 @NgModule({
-  declarations: [HeaderComponent, HeaderLeftSectionComponent, HeaderRightSectionComponent, HeaderMiddleSectionComponent],
+  declarations: [
+    HeaderComponent, HeaderLeftSectionComponent,
+    HeaderRightSectionComponent, HeaderMiddleSectionComponent,
+    ],
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -17,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     HeaderLeftSectionComponent,
     HeaderRightSectionComponent,
-    HeaderMiddleSectionComponent,]
+    HeaderMiddleSectionComponent,
+    FontAwesomeModule,]
 })
 export class SharedModule { }

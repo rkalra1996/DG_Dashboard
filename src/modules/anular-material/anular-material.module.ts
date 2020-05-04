@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -7,6 +8,6 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
   ],
-  exports: []
+  exports: [MatSidenavModule]
 })
 export class AnularMaterialModule { }
