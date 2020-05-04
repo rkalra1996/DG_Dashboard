@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Observable, of} from 'rxjs';
-import {startWith, filter, map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {startWith, map} from 'rxjs/operators';
 
 @Component({
   selector: 'angular-material-filter-dropdown',
