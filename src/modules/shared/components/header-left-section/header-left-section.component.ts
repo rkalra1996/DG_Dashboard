@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'shared-header-left-section',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderLeftSectionComponent implements OnInit {
 
+  icons = {
+    faCoffee,
+  };
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }
