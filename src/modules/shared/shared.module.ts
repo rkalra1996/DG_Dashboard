@@ -20,6 +20,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderLeftSectionComponent,
     HeaderRightSectionComponent,
     HeaderMiddleSectionComponent,
-    FontAwesomeModule,]
+    FontAwesomeModule, ]
 })
 export class SharedModule { }
