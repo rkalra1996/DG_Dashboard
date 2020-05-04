@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import {MatCardModule} from '@angular/material/card';
     MatSidenavModule, FilterDropdownComponent,
     MatFormFieldModule, FilterDropdownComponent,
     FormsModule, ReactiveFormsModule,
-    MatInputModule,
+    MatInputModule, MatTooltipModule,
     MatCardModule,
   ],
 })

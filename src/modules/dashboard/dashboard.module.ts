@@ -7,7 +7,7 @@ import { AnularMaterialModule } from '../anular-material/anular-material.module'
 import { CardComponent } from './components/card/card.component';
 import { CardHeaderComponent } from './components/card-header/card-header.component';
 import { CardBodyComponent } from './components/card-body/card-body.component';
-
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [DashboardCoreComponent, CardComponent, CardHeaderComponent, CardBodyComponent],
@@ -15,6 +15,7 @@ import { CardBodyComponent } from './components/card-body/card-body.component';
     CommonModule,
     DashboardRoutingModule,
     AnularMaterialModule,
+    FontAwesomeModule,
   ],
   exports: [DashboardCoreComponent],
 })
