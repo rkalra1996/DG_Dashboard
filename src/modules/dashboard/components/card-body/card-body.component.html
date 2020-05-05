@@ -1,62 +1,67 @@
-<div class="card-body">
-    <div class="question-container">
-        <p class="text">What needs to be improved in video content and dissemination ?</p>
+<ng-container *ngIf="bodyData">
+    <div class="card-body">
+        <div *ngIf="bodyData.question" class="question-container">
+            <p class="text">{{bodyData.question}}</p>
+        </div>
+        <div *ngIf="bodyData?.cards.length" class="block-container">
+            <ng-container *ngFor="let card of bodyData.cards; let i = index">
+                <div [class]="'block-' + (i+1)">
+                    <p *ngIf="card?.title_text" class="block-title">
+                        {{card.title_text}}
+                    </p>
+                    <p *ngIf="card?.body_text" class="block-text">
+                        {{card.body_text}}
+                    </p>
+                    <div *ngIf="card?.view_more_link" class="view-more">
+                        <button class="vmBtn">View More...</button>
+                    </div>
+                    <div *ngIf="card?.percentage" class="accuracy-indicator">
+                        <p *ngIf="card.percentage?.accuracy" class="percentage">{{card.percentage.accuracy}}%</p>
+                        <span [matTooltip]="card.percentage?.placeholder || 'This represents the overall accuracy of section'"
+                        [matTooltipPosition]="'after'">
+                            <fa-icon [icon]="icons?.faInfoCircle"></fa-icon>
+                        </span>
+                    </div>
+                </div>
+            </ng-container>
+            
+            <!-- <div class="block-2">
+                <p class="block-title">
+                    Rains and Roads
+                </p>
+                <p class="block-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                </p>
+                <div class="view-more">
+                    <button class="vmBtn">View More...</button>
+                </div>
+                <div class="accuracy-indicator">
+                    <p class="percentage">69%</p>
+                    <span matTooltip="Info about the action"
+                    [matTooltipPosition]="'after'">
+                        <fa-icon [icon]="icons?.faInfoCircle"></fa-icon>
+                    </span>
+                </div>
+            </div>
+            <div class="block-3">
+                <p class="block-title">
+                    Others
+                </p>
+                <p class="block-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                </p>
+                <div class="view-more">
+                    <button class="vmBtn">View More...</button>
+                </div>
+                <div class="accuracy-indicator">
+                    <p class="percentage">69%</p>
+                    <span matTooltip="Info about the action"
+                    [matTooltipPosition]="'after'">
+                        <fa-icon [icon]="icons?.faInfoCircle"></fa-icon>
+                    </span>
+                </div>
+            </div> -->
+        </div>
+    
     </div>
-    <div class="block-container">
-        <div class="block-1">
-            <p class="block-title">
-                Market accesibility
-            </p>
-            <p class="block-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-            </p>
-            <div class="view-more">
-                <button class="vmBtn">View More...</button>
-            </div>
-            <div class="accuracy-indicator">
-                <p class="percentage">69%</p>
-                <span matTooltip="Info about the action"
-                [matTooltipPosition]="'after'">
-                    <fa-icon [icon]="icons?.faInfoCircle"></fa-icon>
-                </span>
-            </div>
-        </div>
-        <div class="block-2">
-            <p class="block-title">
-                Rains and Roads
-            </p>
-            <p class="block-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-            </p>
-            <div class="view-more">
-                <button class="vmBtn">View More...</button>
-            </div>
-            <div class="accuracy-indicator">
-                <p class="percentage">69%</p>
-                <span matTooltip="Info about the action"
-                [matTooltipPosition]="'after'">
-                    <fa-icon [icon]="icons?.faInfoCircle"></fa-icon>
-                </span>
-            </div>
-        </div>
-        <div class="block-3">
-            <p class="block-title">
-                Others
-            </p>
-            <p class="block-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-            </p>
-            <div class="view-more">
-                <button class="vmBtn">View More...</button>
-            </div>
-            <div class="accuracy-indicator">
-                <p class="percentage">69%</p>
-                <span matTooltip="Info about the action"
-                [matTooltipPosition]="'after'">
-                    <fa-icon [icon]="icons?.faInfoCircle"></fa-icon>
-                </span>
-            </div>
-        </div>
-    </div>
-
-</div>
+</ng-container>
