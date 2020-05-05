@@ -22,3 +22,9 @@
 .logo {
     padding: 15px 0 15px 10px;
 }
+
+@media (max-width: 930px) {
+    .logo {
+        display: none;
+    }
+}

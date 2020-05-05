@@ -1,6 +1,9 @@
 <!-- <shared-global-sidebar></shared-global-sidebar> -->
 <mat-sidenav-container class="global-sidebar-container">
     <mat-sidenav #sidenav [mode]="'over'" class="global-sidenav">
+        <div class="logo">
+            <img src="assets/images/logo.png">
+        </div>
         <div class="tabs">
             <ul class="tab-list">
                 <li class="tab-item" [ngClass]="{'active': currentRoute('dashboard')}">

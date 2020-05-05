@@ -3,6 +3,12 @@
     .global-sidenav {
         background-color: black;
         width: 150px;
+        .logo {
+            display: none;
+            height: 80px;
+            padding-top: 20px;
+            padding-left: 5px;
+        }
         .tabs {
             color: white;
             .tab-list {
@@ -41,4 +47,16 @@
             }
         }
     }
-}   
+}
+
+
+@media (max-width: 930px) {
+    .global-sidebar-container {
+        .global-sidenav {
+            width: 250px;
+            .logo {
+                display: block;
+            }
+        }
+    }
+}
