@@ -17,51 +17,16 @@
                     </div>
                     <div *ngIf="card?.percentage" class="accuracy-indicator">
                         <p *ngIf="card.percentage?.accuracy" class="percentage">{{card.percentage.accuracy}}%</p>
-                        <span [matTooltip]="card.percentage?.placeholder || 'This represents the overall accuracy of section'"
-                        [matTooltipPosition]="'after'">
+                        <span
+                            [matTooltip]="card.percentage?.placeholder || 'This represents the overall accuracy of section'"
+                            [matTooltipPosition]="'after'">
                             <fa-icon [icon]="icons?.faInfoCircle"></fa-icon>
                         </span>
                     </div>
                 </div>
             </ng-container>
-            
-            <!-- <div class="block-2">
-                <p class="block-title">
-                    Rains and Roads
-                </p>
-                <p class="block-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                </p>
-                <div class="view-more">
-                    <button class="vmBtn">View More...</button>
-                </div>
-                <div class="accuracy-indicator">
-                    <p class="percentage">69%</p>
-                    <span matTooltip="Info about the action"
-                    [matTooltipPosition]="'after'">
-                        <fa-icon [icon]="icons?.faInfoCircle"></fa-icon>
-                    </span>
-                </div>
-            </div>
-            <div class="block-3">
-                <p class="block-title">
-                    Others
-                </p>
-                <p class="block-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                </p>
-                <div class="view-more">
-                    <button class="vmBtn">View More...</button>
-                </div>
-                <div class="accuracy-indicator">
-                    <p class="percentage">69%</p>
-                    <span matTooltip="Info about the action"
-                    [matTooltipPosition]="'after'">
-                        <fa-icon [icon]="icons?.faInfoCircle"></fa-icon>
-                    </span>
-                </div>
-            </div> -->
+
         </div>
-    
+
     </div>
 </ng-container>
