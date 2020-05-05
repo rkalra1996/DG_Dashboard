@@ -3,12 +3,12 @@
     <mat-sidenav #sidenav [mode]="'over'" class="global-sidenav">
         <div class="tabs">
             <ul class="tab-list">
-                <li class="tab-item">
+                <li class="tab-item" [ngClass]="{'active': currentRoute('dashboard')}">
                     <button class="toggle-button">
                         <fa-icon [icon]="icons?.faTachometerAlt"></fa-icon><span>Dashboard</span>
                     </button>
                 </li>
-                <li class="tab-item">
+                <li class="tab-item" [ngClass]="{'active': currentRoute('settings')}">
                     <button class="toggle-button">
                         <fa-icon [icon]="icons?.faTools"></fa-icon><span>Settings</span>
                     </button>
