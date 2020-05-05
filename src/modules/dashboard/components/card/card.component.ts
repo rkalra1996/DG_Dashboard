@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {GlobalCardInterface} from './../../interfaces/card-interfaces/global-card-interface';
 
 @Component({
   selector: 'dashboard-card',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  @Input() cardData: any;
+  @Input() cardData: GlobalCardInterface;
 
   constructor() { }
 

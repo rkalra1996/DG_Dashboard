@@ -5,7 +5,7 @@
             (selected)="triggerStateSelect($event)">
         </angular-material-filter-dropdown>
     </div>
-    <ng-container *ngFor="let card of [1,2,3,4]">
+    <ng-container *ngFor="let card of serverCards">
         <div class="cards-container">
             <dashboard-card [cardData]="card"></dashboard-card>
         </div>

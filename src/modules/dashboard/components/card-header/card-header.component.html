@@ -1,16 +1,16 @@
-<div class="card-header">
-    <div class="image-section">
-        <img src="assets/images/youtube-logo.png">
+<ng-container *ngIf="headerData?.blocks.length">
+    <div class="card-header">
+        <ng-container *ngFor="let block of headerData.blocks">
+            <div *ngIf="block?.blockType == CONSTANTS.BLOCK_TYPE_IMAGE" class="image-section">
+                <img [src]=block.blockUrl>
+            </div>
+            <div *ngIf="block?.blockType == CONSTANTS.BLOCK_TYPE_SESSION" class="stats">
+                <p class="figures">{{block.blockText}}</p>
+                <p class="title">{{block.blockSubText}}</p>
+            </div>
+            <div *ngIf="block?.blockType == CONSTANTS.BLOCK_TYPE_CHART" class="chart">
+                <img src="assets/images/donut_chart.png">   
+            </div>
+        </ng-container>
     </div>
-    <div class="stats">
-        <p class="figures">5,128</p>
-        <p class="title">Sessions</p>
-    </div>
-    <div class="stats">
-        <p class="figures">4,256</p>
-        <p class="title">Feedback Responses</p>
-    </div>
-    <div class="chart">
-        <img src="assets/images/donut_chart.png">   
-    </div>
-</div>
+</ng-container>
