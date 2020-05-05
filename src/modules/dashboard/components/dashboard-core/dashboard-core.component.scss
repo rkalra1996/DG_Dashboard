@@ -9,6 +9,9 @@
         align-items: center;
         justify-content: center;
     }
+    .cards-container {
+        position: relative;
+    }
     angular-material-filter-dropdown {
         width: 300px;
     }

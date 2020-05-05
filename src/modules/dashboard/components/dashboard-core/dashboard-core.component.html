@@ -5,9 +5,14 @@
             (selected)="triggerStateSelect($event)">
         </angular-material-filter-dropdown>
     </div>
-    <ng-container *ngFor="let card of serverCards">
-        <div class="cards-container">
-            <dashboard-card [cardData]="card"></dashboard-card>
-        </div>
+    <ng-container *ngIf="serverCards?.length">
+        <ng-container *ngFor="let card of serverCards">
+            <div class="cards-container">
+                <dashboard-card [cardData]="card"></dashboard-card>
+            </div>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="!serverCards?.length">
+        <shared-loader></shared-loader>
     </ng-container>
 </div>

@@ -5,11 +5,12 @@ import { HeaderLeftSectionComponent } from './components/header-left-section/hea
 import { HeaderRightSectionComponent } from './components/header-right-section/header-right-section.component';
 import { HeaderMiddleSectionComponent } from './components/header-middle-section/header-middle-section.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
     HeaderComponent, HeaderLeftSectionComponent,
-    HeaderRightSectionComponent, HeaderMiddleSectionComponent,
+    HeaderRightSectionComponent, HeaderMiddleSectionComponent, LoaderComponent,
     ],
   imports: [
     CommonModule,
@@ -20,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderLeftSectionComponent,
     HeaderRightSectionComponent,
     HeaderMiddleSectionComponent,
+    LoaderComponent,
     FontAwesomeModule, ]
 })
 export class SharedModule { }
