@@ -14,6 +14,7 @@
 .block-container {
     color: white;
     display: flex;
+    flex-direction: row;
     justify-content: stretch;
     height: 90%;
     .block-1, .block-2, .block-3 {
@@ -27,6 +28,7 @@
             line-height: 1;
             text-align: center;
             font-size: 2.7rem;
+            height: 10%;
             
         }
         .block-text {
@@ -34,6 +36,7 @@
             word-break: break-all;
             font-size: 1.2rem;
             line-height: 1.2;
+            height: 20%;
         }
         .accuracy-indicator {
             align-self: baseline;
@@ -81,5 +84,26 @@
     
     .block-3 {
         background-color: #536eb7;
+    }
+}
+
+@media (max-width: 1500px) {
+    .block-container {
+        .accuracy-indicator {
+            margin: 20px 0;
+        }
+    }
+}
+
+@media (max-width: 930px) {
+    .question-container {
+        text-align: center;
+        margin: 30px 0;
+    }
+    .block-container {
+        flex-direction: column;
+        .accuracy-indicator {
+            margin: 30px 0;
+        }
     }
 }

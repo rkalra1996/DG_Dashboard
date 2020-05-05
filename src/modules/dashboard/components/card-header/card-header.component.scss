@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: stretch;
 }
 
@@ -45,5 +46,29 @@
         margin: auto;
         width: 70%;
         height: 100%;
+    }
+}
+
+@media (max-width: 1090px) {
+    .stats {
+        .figures {
+            font-size: 3.8rem;
+        }
+    }
+}
+
+@media (max-width: 930px) {
+    .card-header {
+        flex-direction: column;
+    }
+    .stats {
+        height: 120px;
+        margin-bottom: 30px;
+    }
+    .image-section, .chart {
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     }
 }
