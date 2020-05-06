@@ -1,7 +1,8 @@
-import {GlobalCardHeaderInterface} from './global-card-header-interface';
-import {GlobalCardBodyInterface} from './global-card-body-interface';
+import { GlobalCardBodyBlockInterface } from './global-card-body-block-interface';
+import { DonutChartInterface } from './donut-chart-intrface';
 
 export interface GlobalCardInterface {
-    header: GlobalCardHeaderInterface;
-    body: GlobalCardBodyInterface;
+    question: string;
+    chart: Array<DonutChartInterface>;
+    blocks: Array<GlobalCardBodyBlockInterface>;
 }

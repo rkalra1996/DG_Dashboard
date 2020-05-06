@@ -1,0 +1,7 @@
+<ng-container *ngIf="stats?.length">
+    <div class="stats-grid">
+        <ng-container *ngFor="let statObj of stats">
+            <dashboard-generic-cards [data]="statObj"></dashboard-generic-cards>
+        </ng-container>
+    </div>
+</ng-container>

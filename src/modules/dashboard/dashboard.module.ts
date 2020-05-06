@@ -9,9 +9,11 @@ import { CardHeaderComponent } from './components/card-header/card-header.compon
 import { CardBodyComponent } from './components/card-body/card-body.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
+import { GenericCardsComponent } from './components/generic-cards/generic-cards.component';
+import { StatsViewerComponent } from './components/stats-viewer/stats-viewer.component';
 
 @NgModule({
-  declarations: [DashboardCoreComponent, CardComponent, CardHeaderComponent, CardBodyComponent],
+  declarations: [DashboardCoreComponent, CardComponent, CardHeaderComponent, CardBodyComponent, GenericCardsComponent, StatsViewerComponent],
   imports: [
     CommonModule,
     HttpClientModule,

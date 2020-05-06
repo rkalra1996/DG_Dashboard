@@ -1,0 +1,32 @@
+.wrapper {
+    width: 100%;
+    min-height: 250px;
+    background-color: #79c143;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.text, .sub-text {
+    margin: 0;
+    width: 100%;
+    p {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+.text {
+    font-size: 3.2rem;
+    padding: 0 6px;
+    font-weight: 600;
+}
+
+.sub-text {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    line-height: 1.2;
+}

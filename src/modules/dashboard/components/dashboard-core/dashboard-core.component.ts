@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DashboardCoreService } from '../../services/dashboard-core-service/dashboard-core.service';
 import { Subscription } from 'rxjs';
-import {GlobalCardInterface} from './../../interfaces/card-interfaces/global-card-interface';
+import { DashboardCardsUIResponseInterface } from '../../interfaces/response-interfaces/dashboard-cards-ui-response-interface';
+import { GenericCardInterface } from '../../interfaces/stats-viewer-interfaces/generic-card-interface';
+import { GlobalCardInterface } from '../../interfaces/card-interfaces/global-card-interface';
 
-interface DashboardCardsResponse {
-  cards: Array<GlobalCardInterface>;
-}
 
 @Component({
   selector: 'app-dashboard-core',
@@ -15,15 +14,17 @@ interface DashboardCardsResponse {
 export class DashboardCoreComponent implements OnInit, OnDestroy {
 
   dashboardCardSub: Subscription;
-  serverCards: any[];
+  serverCards: Array<GlobalCardInterface>;
+  serverStats: Array<GenericCardInterface>;
 
   constructor(private readonly dcSrvc: DashboardCoreService) { }
 
   ngOnInit(): void {
-    
-    this.dashboardCardSub = this.dcSrvc.getDashboardCards().subscribe((response: DashboardCardsResponse) => {
+
+    this.dashboardCardSub = this.dcSrvc.getDashboardCards().subscribe((response: DashboardCardsUIResponseInterface) => {
       console.log('recieved response from the server ', response);
       this.serverCards = [...response.cards];
+      this.serverStats = [...response.stats];
     }, error => {
       console.error('An error occured while fetching dashboard cards from the server ', error);
     });

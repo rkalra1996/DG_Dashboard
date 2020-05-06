@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UrlConfigService } from 'src/modules/shared/services/url-config-service/url-config.service';
-import {from, Observable} from 'rxjs';
-import {map, tap, mergeMap, toArray} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import { DashboardCardAPIResponseInterface } from '../../interfaces/response-interfaces/dashboard-card-api-response';
 
 @Injectable({
   providedIn: 'root'
@@ -27,19 +28,20 @@ export class DashboardUtilityService {
    * @param cardsData -> Essentially the response recieved from getcards api.
    * @returns  formatted version of cards api needed by the UI
    */
-  parseCardsResponseForUI = () => (source: Observable<any>) => {
+  parseCardsResponseForUI = () => (source: Observable<DashboardCardAPIResponseInterface>) => {
     return new Observable(observer => {
       return source.pipe(
-        map(value => value['data']),
-        mergeMap(dataArray => from(dataArray).pipe(
-          map(data =>  this.transformCardResponseObject(data) ),
-          toArray()
-          )
-        )
+        map(value => {
+          return value['data'];
+        }),
+        map(originalData =>  this.transformCardResponseObject(originalData) )
       ).subscribe({
           next(data) {
             console.log('recieved data inside operator as ', data);
-            observer.next({cards: [...data]});
+            observer.next({
+              stats: [ ...data['stats'] ],
+              cards: [ ...data['cards'] ],
+            });
           },
           error(e) {
             observer.error(e);
@@ -51,75 +53,70 @@ export class DashboardUtilityService {
     });
   }
 
-  transformCardObjectHeader(cardObject) {
+  transformDataForStats(cardObject) {
     const headerTemplate = {
-      header: {
-        blocks: []
-      }
+      stats: [],
     };
-    // transforming image section
-    if (cardObject.hasOwnProperty('imageSrc')) {
-      const imageBlock = {
-        blockType: 'image',
-        blockUrl: cardObject.imageSrc
-      };
-      headerTemplate.header.blocks.push(imageBlock);
-    }
-    // transforming stats section
-    if (cardObject.hasOwnProperty('stats')) {
-      const newStats = cardObject.stats.map(statObj => {
-        return {
-          blockType: 'section',
-          blockText: statObj['title'] ? statObj['title'] : '',
-          blockSubText: statObj['subtitle'] ? statObj['subtitle'] : ''
-        };
-      });
-      headerTemplate.header.blocks.push(...newStats);
-    }
-    // transforming chart section
-    if (cardObject.hasOwnProperty('chart')) {
-      const newTemplate = {
-        blockType: 'chart',
-        url: cardObject.chart.url ? cardObject.chart.url : '',
-        chartData: cardObject.chart.hasOwnProperty('data') ? {...cardObject.chart.data} : {}
-      };
-      headerTemplate.header.blocks.push(newTemplate);
+    if (Object.keys(cardObject).length) {
+      headerTemplate.stats = Object.keys(cardObject).map(key => {
+        return {text: cardObject[key], subText: key};
+      }
+    );
     }
     return {...headerTemplate};
   }
 
-  transformCardObjectBody(cardObject) {
-    const bodyTemplate = {
-      body: {
-        question: '',
-        cards: []
-      }
+  transformDataForCards(questionsArray) {
+    const cardsTemplate = {
+      cards: [],
     };
-    if (cardObject.hasOwnProperty('session_question')) {
-      bodyTemplate.body.question = cardObject.session_question ? cardObject.session_question : '';
-    }
-    if (cardObject.hasOwnProperty('session_details') && Array.isArray(cardObject.session_details)) {
-      const newSessionDetails = cardObject.session_details.map(sessionObj => {
-        return {
-          title_text: sessionObj['title'] ? sessionObj['title'] : '',
-          body_text: sessionObj['info'] ? sessionObj['info'] : '',
-          view_more_link: sessionObj['view_more_link'] ? sessionObj['view_more_link'] : '',
-          percentage: {
-            accuracy: sessionObj['accuracy'] ? sessionObj.accuracy.value : 'NA',
-            placeholder: sessionObj['accuracy'] ? sessionObj.accuracy.info : 'Overall accuracy of the section',
-          },
-        };
-      });
-      bodyTemplate.body.cards.push(...newSessionDetails);
-    }
-    return {...bodyTemplate};
+    cardsTemplate.cards = questionsArray.map(questionObj => {
+      const newQuestionTemplate = {
+        question: '',
+        chart: [],
+        blocks: [],
+      };
+      if (questionObj.hasOwnProperty('label')) {
+        newQuestionTemplate.question = questionObj.label ? questionObj.label : '';
+      }
+      if (questionObj.hasOwnProperty('topics') && Array.isArray(questionObj.topics)) {
+        questionObj.topics.forEach(topicObj => {
+          // create chart object
+          const chartObj = {
+            label: topicObj['title'],
+            value: topicObj['feedback_percentage'],
+          };
+          newQuestionTemplate.chart.push(chartObj);
+          // create card object
+          const cardObj = {
+            title_text: topicObj['title'],
+            body_text: topicObj['text'],
+            view_more_link: '',
+            percentage: {
+              accuracy: topicObj['accuracy_percentage'],
+              placeholder: `Overall accuracy of this section is ${topicObj['accuracy_percentage']}`,
+            }
+          };
+          newQuestionTemplate.blocks.push(cardObj);
+        });
+      }
+      return {...newQuestionTemplate};
+    });
+    return {...cardsTemplate};
   }
 
-  transformCardResponseObject(cardObject) {
+  transformCardResponseObject(responseData) {
     const template = {
-      header: {...this.transformCardObjectHeader(cardObject).header},
-      body: {...this.transformCardObjectBody(cardObject).body},
+      stats: [],
+      cards: [],
     };
+    if (responseData && responseData.hasOwnProperty('stats')) {
+      template.stats = [...this.transformDataForStats(responseData.stats).stats];
+    }
+    if (responseData && responseData.hasOwnProperty('questions')) {
+      const transformedData = this.transformDataForCards(responseData.questions);
+      template.cards = [...transformedData.cards];
+    }
     console.log('transformed data as ', template);
     return template;
   }

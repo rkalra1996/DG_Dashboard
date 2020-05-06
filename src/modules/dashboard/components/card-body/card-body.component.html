@@ -1,10 +1,17 @@
 <ng-container *ngIf="bodyData">
     <div class="card-body">
-        <div *ngIf="bodyData.question" class="question-container">
-            <p class="text">{{bodyData.question}}</p>
+        <div *ngIf="bodyData?.question" class="question-container">
+            <div class="question-text">
+                <p class="text">{{bodyData.question}}</p>
+            </div>
+            <div *ngIf="bodyData?.chart" class="chart-container">
+                <div class="chart-wrapper">
+                    <img src="assets/images/donut_chart.png">
+                </div>
+            </div>
         </div>
-        <div *ngIf="bodyData?.cards.length" class="block-container">
-            <ng-container *ngFor="let card of bodyData.cards; let i = index">
+        <div *ngIf="bodyData?.blocks.length" class="block-container">
+            <ng-container *ngFor="let card of bodyData.blocks; let i = index">
                 <div [class]="'block-' + (i+1)">
                     <p *ngIf="card?.title_text" class="block-title">
                         {{card.title_text}}

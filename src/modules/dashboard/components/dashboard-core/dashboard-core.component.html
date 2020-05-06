@@ -5,6 +5,11 @@
             (selected)="triggerStateSelect($event)">
         </angular-material-filter-dropdown>
     </div>
+    <ng-container *ngIf="serverStats?.length">
+        <div class="generic-cards-container">
+            <dashboard-stats-viewer [stats]="serverStats"></dashboard-stats-viewer>
+        </div>
+    </ng-container>
     <ng-container *ngIf="serverCards?.length">
         <ng-container *ngFor="let card of serverCards">
             <div class="cards-container">

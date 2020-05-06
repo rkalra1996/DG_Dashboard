@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 export class UrlConfigService {
 
   private readonly config = {
-    BASE: 'https://my-json-server.typicode.com/rkalra1996/DG-client-dashboard-dummy-server',
+    BASE: 'https://extendsclass.com/api/json-storage/bin',
     API: {
-        GET_DASHBOARD_CARDS: '/raw',
+        GET_DASHBOARD_CARDS: '/fcddbfd',
     },
 };
   constructor() { }

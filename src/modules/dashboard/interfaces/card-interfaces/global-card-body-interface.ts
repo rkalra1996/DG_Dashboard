@@ -1,12 +1,9 @@
-interface GlobalCardBodyBlockInterface {
-    title_text: string;
-    body_text?: string;
-    view_more_link?: string;
-    percentage_accuracy?: string | number;
-    percentage_placeholder?: string;
-}
+import { DonutChartInterface } from './donut-chart-intrface';
+import { GlobalCardBodyBlockInterface } from './global-card-body-block-interface';
+
 
 export interface GlobalCardBodyInterface {
     question?: string;
-    cards?: Array<GlobalCardBodyBlockInterface>;
+    blocks?: Array<GlobalCardBodyBlockInterface>;
+    chart?: Array<DonutChartInterface>;
 }

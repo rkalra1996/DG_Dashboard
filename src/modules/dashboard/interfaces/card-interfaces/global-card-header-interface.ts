@@ -1,11 +1,5 @@
-interface GlobalHeaderBlockInterface {
-    blockType: string;
-    blockUrl?: string;
-    blockText?: string;
-    blockSubText?: string;
-    chartData?: object;
-}
+import { GlobalCardBodyBlockInterface } from './global-card-body-block-interface';
 
 export interface GlobalCardHeaderInterface {
-    blocks: Array<GlobalHeaderBlockInterface>;
+    blocks: Array<GlobalCardBodyBlockInterface>;
 }

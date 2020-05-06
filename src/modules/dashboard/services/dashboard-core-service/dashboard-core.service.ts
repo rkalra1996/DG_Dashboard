@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DashboardUtilityService } from '../dashboard-utility-service/dashboard-utility.service';
-import { map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({
