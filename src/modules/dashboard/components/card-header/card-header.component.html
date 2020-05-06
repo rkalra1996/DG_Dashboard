@@ -2,7 +2,9 @@
     <div class="card-header">
         <ng-container *ngFor="let block of headerData.blocks">
             <div *ngIf="block?.blockType == CONSTANTS.BLOCK_TYPE_IMAGE" class="image-section">
-                <img [src]=block.blockUrl>
+                <div class="image-container">
+                    <img [src]=block.blockUrl>
+                </div>
             </div>
             <div *ngIf="block?.blockType == CONSTANTS.BLOCK_TYPE_SESSION" class="stats">
                 <p class="figures">{{block.blockText}}</p>
