@@ -14,10 +14,8 @@ export class DashboardCoreService {
    * Gets dashboard cards. Service to get all the dashboard related cards
    */
   getDashboardCards() {
-    return this.dUSrvc.hitDashboardGetCardsAPI().pipe(map(response => {
-      console.log('recieved response as ', response);
-      // parse the result
-      return this.dUSrvc.parseCardsResponseForUI(response);
-    }));
+    const response$ = this.dUSrvc.hitDashboardGetCardsAPI();
+    const transformedResponse$ = response$.pipe(this.dUSrvc.parseCardsResponseForUI());
+    return transformedResponse$;
   }
 }

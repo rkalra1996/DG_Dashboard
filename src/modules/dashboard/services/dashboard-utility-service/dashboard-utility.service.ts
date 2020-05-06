@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UrlConfigService } from 'src/modules/shared/services/url-config-service/url-config.service';
-import {from} from 'rxjs';
+import {from, Observable} from 'rxjs';
 import {map, tap, mergeMap, toArray} from 'rxjs/operators';
 
 @Injectable({
@@ -19,22 +19,7 @@ export class DashboardUtilityService {
    */
   hitDashboardGetCardsAPI() {
     const url = this.apiSrvc.APIConfig.BASE + this.apiSrvc.APIConfig.API.GET_DASHBOARD_CARDS;
-    const request$ = this.http.get(url).pipe(
-      map(res => res['data']),
-      mergeMap(dataArray => {
-        return from(dataArray).pipe(
-          map(data =>  this.transformCardResponseObject(data) ),
-          );
-      }),
-      toArray(),
-      tap(data => console.log('merged tap ', data)),
-      map(combinedArray => {
-        return {
-          cards: combinedArray
-        };
-      })
-      );
-    return request$;
+    return this.http.get(url);
   }
 
   /**
@@ -42,8 +27,28 @@ export class DashboardUtilityService {
    * @param cardsData -> Essentially the response recieved from getcards api.
    * @returns  formatted version of cards api needed by the UI
    */
-  parseCardsResponseForUI(cardsData) {
-    return cardsData;
+  parseCardsResponseForUI = () => (source: Observable<any>) => {
+    return new Observable(observer => {
+      return source.pipe(
+        map(value => value['data']),
+        mergeMap(dataArray => from(dataArray).pipe(
+          map(data =>  this.transformCardResponseObject(data) ),
+          toArray()
+          )
+        )
+      ).subscribe({
+          next(data) {
+            console.log('recieved data inside operator as ', data);
+            observer.next({cards: [...data]});
+          },
+          error(e) {
+            observer.error(e);
+          },
+          complete() {
+            observer.complete();
+          }
+      });
+    });
   }
 
   transformCardObjectHeader(cardObject) {
