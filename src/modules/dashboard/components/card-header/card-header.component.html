@@ -11,7 +11,9 @@
                 <p class="title">{{block.blockSubText}}</p>
             </div>
             <div *ngIf="block?.blockType == CONSTANTS.BLOCK_TYPE_CHART" class="chart">
-                <img src="assets/images/donut_chart.png">   
+                <div class="image-container">
+                    <img src="assets/images/donut_chart.png">
+                </div>
             </div>
         </ng-container>
     </div>
