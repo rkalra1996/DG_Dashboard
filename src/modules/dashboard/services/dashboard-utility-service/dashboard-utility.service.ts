@@ -32,15 +32,15 @@ export class DashboardUtilityService {
     return new Observable(observer => {
       return source.pipe(
         map(value => {
-          return value['data'];
+          return value.data;
         }),
         map(originalData =>  this.transformCardResponseObject(originalData) )
       ).subscribe({
           next(data) {
             console.log('recieved data inside operator as ', data);
             observer.next({
-              stats: [ ...data['stats'] ],
-              cards: [ ...data['cards'] ],
+              stats: [ ...data.stats ],
+              cards: [ ...data.cards ],
             });
           },
           error(e) {
@@ -83,18 +83,18 @@ export class DashboardUtilityService {
         questionObj.topics.forEach(topicObj => {
           // create chart object
           const chartObj = {
-            label: topicObj['title'],
-            value: topicObj['feedback_percentage'],
+            label: topicObj.title,
+            value: topicObj.feedback_percentage,
           };
           newQuestionTemplate.chart.push(chartObj);
           // create card object
           const cardObj = {
-            title_text: topicObj['title'],
-            body_text: topicObj['text'],
+            title_text: topicObj.title,
+            body_text: topicObj.text,
             view_more_link: '',
             percentage: {
-              accuracy: topicObj['accuracy_percentage'],
-              placeholder: `Overall accuracy of this section is ${topicObj['accuracy_percentage']}`,
+              accuracy: topicObj.accuracy_percentage,
+              placeholder: `Overall accuracy of this section is ${topicObj.accuracy_percentage}`,
             }
           };
           newQuestionTemplate.blocks.push(cardObj);
