@@ -5,7 +5,7 @@ import {GlobalCardInterface} from './../../interfaces/card-interfaces/global-car
 
 interface DashboardCardsResponse {
   cards: Array<GlobalCardInterface>;
-};
+}
 
 @Component({
   selector: 'app-dashboard-core',
@@ -20,6 +20,7 @@ export class DashboardCoreComponent implements OnInit, OnDestroy {
   constructor(private readonly dcSrvc: DashboardCoreService) { }
 
   ngOnInit(): void {
+    
     this.dashboardCardSub = this.dcSrvc.getDashboardCards().subscribe((response: DashboardCardsResponse) => {
       console.log('recieved response from the server ', response);
       this.serverCards = [...response.cards];

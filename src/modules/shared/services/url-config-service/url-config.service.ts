@@ -8,7 +8,7 @@ export class UrlConfigService {
   private readonly config = {
     BASE: 'https://my-json-server.typicode.com/rkalra1996/DG-client-dashboard-dummy-server',
     API: {
-        GET_DASHBOARD_CARDS: '/dashboard',
+        GET_DASHBOARD_CARDS: '/raw',
     },
 };
   constructor() { }
