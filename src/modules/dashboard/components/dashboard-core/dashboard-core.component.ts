@@ -23,10 +23,20 @@ export class DashboardCoreComponent implements OnInit, OnDestroy {
 
     this.dashboardCardSub = this.dcSrvc.getDashboardCards().subscribe((response: DashboardCardsUIResponseInterface) => {
       console.log('recieved response from the server ', response);
-      this.serverCards = [...response.cards];
+      this.serverCards = this.modifyChartsInfo([...response.cards]);
+      console.log('modified cards now look like ', this.serverCards);
       this.serverStats = [...response.stats];
     }, error => {
       console.error('An error occured while fetching dashboard cards from the server ', error);
+    });
+  }
+
+  modifyChartsInfo(cardsArray) {
+    return cardsArray.map((card, index) => {
+      return {
+        ...card,
+        chart: {id: index, data: [...card.chart]},
+      };
     });
   }
 

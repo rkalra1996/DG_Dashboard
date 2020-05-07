@@ -6,25 +6,32 @@ import * as highcharts from 'highcharts';
   templateUrl: './highcharts-donought.component.html',
   styleUrls: ['./highcharts-donought.component.scss']
 })
-export class HighchartsDonoughtComponent implements OnInit {
+export class HighchartsDonoughtComponent implements OnInit, AfterViewInit {
 
   plotData: Array<object>;
-  chartID: string;
+  colorCodes = ['#f2bf5e', '#4bb0b8', '#536eb7'];
+  @Input() chartID: string;
   @Input() set chartData(value: object) {
-    if (Array.isArray(value['data'])) {
-      console.log('recieved data in plot', value);
-      this.plotData = value['data'].map((v: {label: string, value: string}) => {
-        return {
-          name: v.label,
-          y: +v.value
-        };
-      });
-      // render the chart
-      this.chartID = 'donut-chart-container_' + value['id'];
-      this.renderChart(this.chartID);
-    }
+    this.modifyInput(value);
   }
   constructor() { }
+
+  modifyInput(value) {
+    if (Array.isArray(value)) {
+      this.plotData = value.map((v: {label: string, value: string}, i) => {
+        return {
+          name: v.label,
+          y: +v.value,
+          color: this.colorCodes[i],
+        };
+      }, this);
+      console.log('plot data looks like ', this.plotData);
+    }
+  }
+
+  ngAfterViewInit() {
+    this.renderChart(this.chartID);
+  }
 
   renderChart(chartID) {
     highcharts.chart(chartID, {
@@ -46,21 +53,7 @@ export class HighchartsDonoughtComponent implements OnInit {
     series: [{
       type: 'pie',
       name: 'Feedback',
-      data: [{
-        name: 'sample 1',
-        y: 40,
-        color: '#f2bf5e'
-      },
-      {
-        name: 'sample 2',
-        y: 40,
-        color: '#4bb0b8',
-      },
-      {
-        name: 'sample 3',
-        y: 20,
-        color: '#536eb7'
-      }
+      data: [...this.plotData
       ],
       size: '100%',
       innerSize: '40%',

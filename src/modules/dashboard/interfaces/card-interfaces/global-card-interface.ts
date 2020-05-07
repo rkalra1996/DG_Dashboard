@@ -3,6 +3,9 @@ import { DonutChartInterface } from './donut-chart-intrface';
 
 export interface GlobalCardInterface {
     question: string;
-    chart: Array<DonutChartInterface>;
+    chart: {
+        id?: string | number;
+        data: Array<DonutChartInterface>;
+    };
     blocks: Array<GlobalCardBodyBlockInterface>;
 }
