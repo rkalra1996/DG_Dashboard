@@ -6,7 +6,8 @@
             </div>
             <div *ngIf="bodyData?.chart" class="chart-container">
                 <div class="chart-wrapper">
-                    <img src="assets/images/donut_chart.png">
+                    <!-- <img src="assets/images/donut_chart.png"> -->
+                    <shared-highcharts-donought [chartData]="bodyData.chart"></shared-highcharts-donought>
                 </div>
             </div>
         </div>

@@ -13,7 +13,10 @@ import { GenericCardsComponent } from './components/generic-cards/generic-cards.
 import { StatsViewerComponent } from './components/stats-viewer/stats-viewer.component';
 
 @NgModule({
-  declarations: [DashboardCoreComponent, CardComponent, CardHeaderComponent, CardBodyComponent, GenericCardsComponent, StatsViewerComponent],
+  declarations: [
+    DashboardCoreComponent, CardComponent,
+    CardHeaderComponent, CardBodyComponent,
+    GenericCardsComponent, StatsViewerComponent],
   imports: [
     CommonModule,
     HttpClientModule,

@@ -6,11 +6,12 @@ import { HeaderRightSectionComponent } from './components/header-right-section/h
 import { HeaderMiddleSectionComponent } from './components/header-middle-section/header-middle-section.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoaderComponent } from './components/loader/loader.component';
+import { HighchartsDonoughtComponent } from './components/charts/highcharts-donought/highcharts-donought.component';
 
 @NgModule({
   declarations: [
     HeaderComponent, HeaderLeftSectionComponent,
-    HeaderRightSectionComponent, HeaderMiddleSectionComponent, LoaderComponent,
+    HeaderRightSectionComponent, HeaderMiddleSectionComponent, LoaderComponent, HighchartsDonoughtComponent,
     ],
   imports: [
     CommonModule,
@@ -22,6 +23,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     HeaderRightSectionComponent,
     HeaderMiddleSectionComponent,
     LoaderComponent,
+    HighchartsDonoughtComponent,
     FontAwesomeModule, ]
 })
 export class SharedModule { }
