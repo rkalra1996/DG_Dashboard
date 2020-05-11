@@ -37,7 +37,11 @@ export class HighchartsDonoughtComponent implements OnInit, AfterViewInit {
     highcharts.chart(chartID, {
       title: null,
       chart: {
+        height: (9 / 13 * 100) + '%',
         type: 'pie',
+      },
+      credits: {
+        enabled: false
       },
       plotOptions: {
         pie: {
