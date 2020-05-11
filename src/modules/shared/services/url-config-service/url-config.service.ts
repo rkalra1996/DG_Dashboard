@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {environment} from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -6,14 +7,20 @@ import { Injectable } from '@angular/core';
 export class UrlConfigService {
 
   private readonly config = {
-    BASE: 'https://extendsclass.com/api/json-storage/bin',
+    BASE: environment['HOST'],
     API: {
-        GET_DASHBOARD_CARDS: '/fcddbfd',
+      PREFIX: '/api/v1',
+      GET_DASHBOARD_CARDS: '/json/fcddbfd',
     },
 };
-  constructor() { }
+  constructor() {
+    console.log('recieved environment as ', environment);
+  }
 
   get APIConfig() {
-    return this.config;
+    return  {
+      hostPoint: `${this.config.BASE}${this.config.API.PREFIX}`,
+      ...this.config,
+    };
   }
 }

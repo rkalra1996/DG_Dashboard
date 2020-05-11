@@ -19,7 +19,7 @@ export class DashboardUtilityService {
    * @returns  Observable of type HttpResponse
    */
   hitDashboardGetCardsAPI() {
-    const url = this.apiSrvc.APIConfig.BASE + this.apiSrvc.APIConfig.API.GET_DASHBOARD_CARDS;
+    const url = this.apiSrvc.APIConfig.API.PREFIX + this.apiSrvc.APIConfig.API.GET_DASHBOARD_CARDS;
     return this.http.get(url);
   }
 
