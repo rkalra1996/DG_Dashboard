@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { DashboardCoreService } from '../../services/dashboard-core-service/dashboard-core.service';
 import { Subscription } from 'rxjs';
 import { DashboardCardsUIResponseInterface } from '../../interfaces/response-interfaces/dashboard-cards-ui-response-interface';
 import { GenericCardInterface } from '../../interfaces/stats-viewer-interfaces/generic-card-interface';
 import { GlobalCardInterface } from '../../interfaces/card-interfaces/global-card-interface';
+import { HeaderMiddleSectionComponent } from 'src/modules/shared/components/header-middle-section/header-middle-section.component';
 
 
 @Component({
@@ -13,11 +14,17 @@ import { GlobalCardInterface } from '../../interfaces/card-interfaces/global-car
 })
 export class DashboardCoreComponent implements OnInit, OnDestroy {
 
+  // inputValue: string;
+
+  // @Input()
+  // second: HeaderMiddleSectionComponent;
+
   dashboardCardSub: Subscription;
   serverCards: Array<GlobalCardInterface>;
   serverStats: Array<GenericCardInterface>;
 
   constructor(private readonly dcSrvc: DashboardCoreService) { }
+
 
   ngOnInit(): void {
 
@@ -40,8 +47,11 @@ export class DashboardCoreComponent implements OnInit, OnDestroy {
     });
   }
 
+
   triggerStateSelect(event) {
     console.log('state select recieved in dashboard as ', event);
+    // this.dcSrvc.triggerStateSelect();
+    this.dcSrvc.newEvent(event);
   }
 
   ngOnDestroy() {

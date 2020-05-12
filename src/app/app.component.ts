@@ -17,6 +17,6 @@ export class AppComponent {
   constructor(private readonly router: Router) {}
 
   currentRoute(routeToMatch: string) {
-    if (this.router.url.split('/').includes(routeToMatch)) {return true;} else {return false;}
+    if (this.router.url.split('/').includes(routeToMatch)) {return true; } else {return false;}
   }
 }

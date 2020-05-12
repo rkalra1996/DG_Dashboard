@@ -36,9 +36,27 @@ export class HighchartsDonoughtComponent implements OnInit, AfterViewInit {
   renderChart(chartID) {
     highcharts.chart(chartID, {
       title: null,
+      responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500,
+            },
+            chartOptions: {
+                legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    layout: 'horizontal'
+
+                }
+            }
+        }]
+    },
       chart: {
         height: (9 / 13 * 100) + '%',
         type: 'pie',
+        plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
       },
       credits: {
         enabled: false
@@ -46,12 +64,16 @@ export class HighchartsDonoughtComponent implements OnInit, AfterViewInit {
       plotOptions: {
         pie: {
           shadow: false,
+          dataLabels: {
+            enabled: true,
+            format: '{point.percentage}'
+        }
         }
       },
       tooltip: {
         valueSuffix: 'hello',
         formatter: (val) => {
-            return '<b>' + val['chart']['hoverPoint'].name + '</b>: ' + val['chart']['hoverPoint'].percentage + ' %';
+            return '<b>' + val['chart']['hoverPoint'].name + '</b><br/>: ' + val['chart']['hoverPoint'].percentage + ' %';
         }
     },
     series: [{
@@ -63,7 +85,8 @@ export class HighchartsDonoughtComponent implements OnInit, AfterViewInit {
       innerSize: '40%',
       showInLegend: false,
       dataLabels: {
-          enabled: false
+          enabled: true,
+          crop: false
       }
     }],
     });

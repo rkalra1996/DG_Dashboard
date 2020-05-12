@@ -23,13 +23,44 @@
     }
     .chart-container {
         flex: 1.5;
+        text-align: left;
         .chart-wrapper {
-            max-width: 80%;
+            max-width: 86%;
             margin: auto;
         }
     }
     margin-bottom: 20px;
 }
+
+@media only screen and (max-width: 700px) {
+    .question-container {
+        width: 100%;
+        font-size: 20px;
+        margin: 0;
+        color: rgb(104, 104, 104);
+        display: flex;
+        .question-text {
+            flex: 3.5;
+            font-size: 2rem;
+            text-align: center;
+            align-self: flex-start;
+            line-height: 1.2;
+            padding-top: 50px;
+            p {
+                margin: 0;
+            }
+        }
+        .chart-container {
+            flex: 1.5;
+            text-align: left;
+            .chart-wrapper {
+                max-width: 86%;
+                margin: auto;
+            }
+        }
+        margin-bottom: 20px;
+    }
+  }
 
 .block-container {
     color: white;

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {startWith, map} from 'rxjs/operators';
+import {startWith, map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'angular-material-filter-dropdown',
@@ -19,18 +19,29 @@ export class FilterDropdownComponent implements OnInit {
   ngOnInit() {
     this.filteredOptions = this.materialDropdownControl.valueChanges
     .pipe(
+      tap( value => {
+        console.log(value);
+        return value;
+      }),
       startWith(''),
       map(value => this._filter(value))
       );
   }
 
   _filter(value) {
+    if (value === '') {
+      this.submitSelectedValue('');
+    }
     const filterValue = value.toLowerCase();
     return this.dropdownList.filter(option => option.toLocaleLowerCase().includes(filterValue));
   }
 
   submitSelectedValue(event) {
+    if( event === ''){
+      this.selected.emit(event);
+    } else {
     this.selected.emit(event.option.value.trim());
+    }
   }
 
 }

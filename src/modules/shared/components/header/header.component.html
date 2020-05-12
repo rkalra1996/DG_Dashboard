@@ -3,7 +3,7 @@
         <shared-header-left-section (toggleClick)="emitToggleEvent($event)"></shared-header-left-section>
     </div>
     <div class="middle-section">
-        <shared-header-middle-section></shared-header-middle-section>
+        <shared-header-middle-section [statetodisplay]='state'></shared-header-middle-section>
     </div>
     <div class="right-section">
         <shared-header-right-section></shared-header-right-section>
