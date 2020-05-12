@@ -4,6 +4,11 @@
 /dist
 /tmp
 /out-tsc
+/build
+
+/server/.env
+/package-lock.json
+
 # Only exists if Bazel was run
 /bazel-out
 
